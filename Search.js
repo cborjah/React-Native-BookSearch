@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
-  View
+  NavigatorIOS
 } from 'react-native';
+
+import SearchBooks from './SearchBooks';
 
 class Search extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Search Tab
-        </Text>
-      </View>
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{title: 'Search Books', component: SearchBooks}}
+      />
     );
   }
 }
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  description: {
-    fontSize: 20,
-    backgroundColor: 'white'
+    flex: 1
   }
 });
 
