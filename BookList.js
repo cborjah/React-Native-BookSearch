@@ -11,6 +11,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+import BookDetail from './BookDetail';
 
 let REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:fiction';
 
@@ -41,9 +42,17 @@ class BookList extends Component {
       }).done();
   }
 
+  showBookDetail(book) {
+    this.props.navigator.push({
+      title: book.volumeInfo.title,
+      component: BookDetail,
+      passProps: {book}
+    });
+  }
+
   renderBook(book) {
     return (
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => this.showBookDetail(book)} underlayColor='#dddddd'>
         <View>
           <View style={styles.container}>
             <Image
